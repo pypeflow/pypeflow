@@ -1,0 +1,9 @@
+beautifulsoup4
+jinja2
+mistune==0.6
+pillow
+python-frontmatter==0.2.1
+python-slugify
+pygments
+PyRSS2Gen
+python-dateutil
