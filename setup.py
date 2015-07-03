@@ -3,8 +3,11 @@ from setuptools import setup
 from pypeflow import get_version
 import os
 
-BASE_DIR = os.path.dirname(__file__)
+BASE_DIR = os.path.abspath(os.path.dirname(__file__))
 version = get_version()
+
+with open(os.path.join(BASE_DIR, 'README.rst'), encoding='utf-8') as f:
+    long_description = f.read()
 
 setup(
     name='pypeflow',
@@ -14,7 +17,7 @@ setup(
     author='Gleber Diniz',
     author_email='pypeflowproject@gmail.com',
     description='A static site generator for python developers',
-    long_description=open(os.path.join(BASE_DIR, 'README.rst')).read(),
+    long_description=long_description,
     packages=['pypeflow'],
     license='MIT',
     classifiers=[
@@ -23,6 +26,9 @@ setup(
         'Topic :: Internet :: WWW/HTTP',
         'Topic :: Software Development :: Libraries :: Python Modules',
         'License :: OSI Approved :: MIT License',
+        'Programming Language :: Python :: 3',
+        'Programming Language :: Python :: 3.2',
+        'Programming Language :: Python :: 3.3',
         'Programming Language :: Python :: 3.4',
     ],
     keywords='static site generator'
