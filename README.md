@@ -60,7 +60,7 @@ pypeflow = Pypeflow(
     )
 )
 pypeflow.build()  # write files on build_path
-pypeflow.serve()  # stats a dev server using build_path as root
+pypeflow.serve()  # starts a dev server using build_path as root
 ```
 
 Plugins

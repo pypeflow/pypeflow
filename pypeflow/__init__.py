@@ -1,5 +1,4 @@
 # coding: utf-8
-from __future__ import unicode_literals
 
 # Use 'dev', 'beta', or 'final' as the 4th element to indicate release type.
 VERSION = (1, 0, 0, 'final')
