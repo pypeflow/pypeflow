@@ -22,12 +22,16 @@ class PermalinksPlugin(BaseThreadPlugin):
         url = file.get('url')
         if not url:
             permalink = self.get_permalink_pattern(file)
-            url = '/{}/'.format(re.sub(r':(\w+)', lambda x: slugify(file[x.group(1)]), permalink)).replace('//', '/')
+            url = '/{}/'.format(re.sub(r':(\w+)', lambda x: slugify(file[x.group(1)]), permalink))
+            url = re.sub(r'//+', '/', url)
+            if not url or url == '/':
+                raise Exception('Invalid url "{}" for file "{}" using permalink "{}"'.format(url, path, permalink))
             file['url'] = url
 
-        if url.endswith('/'):
+        new_path = '{}index.html'.format(url) if url.endswith('/') else url
+        if new_path != path:
             return (
-                ('rename_file', {'old_path': path, 'new_path': '{}index.html'.format(url)}),
+                ('rename_file', {'old_path': path, 'new_path': new_path}),
             )
 
     def pre_run(self, pypeflow, files):
