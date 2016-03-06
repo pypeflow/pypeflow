@@ -1,4 +1,5 @@
 # coding: utf-8
+from .core import Pypeflow
 
 # Use 'dev', 'beta', or 'final' as the 4th element to indicate release type.
 VERSION = (1, 0, 0, 'final')
